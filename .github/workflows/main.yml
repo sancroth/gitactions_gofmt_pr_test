@@ -1,10 +1,13 @@
-name: CI
-on: push
+
+name: master
+
+on:
+  push:
 
 jobs:
-  gofmt:
+  gofmt-check:
+    name: checking format against gofmt rules
     runs-on: ubuntu-latest
-    name: check format before running tests
     steps:
       - name: checkout new code
         uses: actions/checkout@v2
@@ -17,3 +20,13 @@ jobs:
           sh ./scripts/gofmt_check.sh
       - name: gofmt run output
         run: echo ${{steps.gofmt_run.outputs.gofmt-test}}
+  build:
+    runs-on: ubuntu-latest
+    needs: gofmt-check
+    steps:
+      - uses: actions/checkout@v2
+        with: # code from pull request
+          ref: ${{github.event.pull_request.head.ref}}
+          repository: ${{github.event.pull_request.head.repo.full_name}}
+      - name: Build binary
+        run: go build main.go
