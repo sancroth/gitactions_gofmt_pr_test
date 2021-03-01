@@ -4,12 +4,14 @@ on: push
 jobs:
   gofmt:
     runs-on: ubuntu-latest
+    name: check format before running tests
     steps:
-      - name: check format before running tests
-      - uses: actions/setup-go@v2
-      - uses: actions/checkout@v2
+      - name: checkout new code
+        uses: actions/checkout@v2
         with: # code from pull request
           ref: ${{github.event.pull_request.head.ref}}
           repository: ${{github.event.pull_request.head.repo.full_name}}
+      - name: run gofmt check script
+        uses: actions/setup-go@v2
         run: |
           sh ./scripts/gofmt_check.sh
