@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GOFMT_TARGETS = $(gofmt -s -l `find . -name '*.go'`)
+GOFMT_TARGETS=$(gofmt -s -l `find . -name '*.go'`)
 
 if [ -n $GOFMT_TARGETS ]; then
     echo "files listed below have not been properly formatted"
