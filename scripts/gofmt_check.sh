@@ -1,6 +1,8 @@
 GOFMT_TARGETS=$(gofmt -s -l `find . -name '*.go'`)
+echo $GOFMT_TARGETS | wc -c
 
-if [[ -n $GOFMT_TARGETS ]]; then
+
+if [ -n "$GOFMT_TARGETS" ]; then
     echo "files listed below have not been properly formatted"
     echo $GOFMT_TARGETS
     echo ""

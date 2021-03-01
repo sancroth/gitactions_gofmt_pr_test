@@ -12,5 +12,8 @@ jobs:
           ref: ${{github.event.pull_request.head.ref}}
           repository: ${{github.event.pull_request.head.repo.full_name}}
       - name: run gofmt test script
+        id: gofmt_run
         run: |
           sh ./scripts/gofmt_check.sh
+      - name: gofmt run output
+        run: echo ${{steps.gofmt_run.outputs.gofmt-test}}
