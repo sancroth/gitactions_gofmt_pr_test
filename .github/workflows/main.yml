@@ -1,7 +1,6 @@
 name: CI
 on: push
 
-
 jobs:
   gofmt:
     runs-on: ubuntu-latest
@@ -12,4 +11,4 @@ jobs:
           repository: ${{github.event.pull_request.head.repo.full_name}}
       - name: check format before running tests
         run: |
-        sh ./scripts/gofmt_check.sh
+          sh ./scripts/gofmt_check.sh
