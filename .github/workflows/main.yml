@@ -14,5 +14,5 @@ jobs:
       - name: load dependency for gofmt
         uses: actions/setup-go@v2
       - name: run gofmt test script
-        shell: bash
-        run: ./scripts/gofmt_check.sh
+        run: |
+          bash ./scripts/gofmt_check.sh
