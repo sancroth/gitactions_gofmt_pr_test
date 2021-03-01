@@ -15,4 +15,4 @@ jobs:
         uses: actions/setup-go@v2
       - name: run gofmt test script
         run: |
-          bash ./scripts/gofmt_check.sh
+          sh ./scripts/gofmt_check.sh
