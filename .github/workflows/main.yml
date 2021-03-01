@@ -1,0 +1,14 @@
+name: CI
+on: push
+
+
+jobs:
+  gofmt:
+    - name: check format before running tests
+      run: |
+      sh ./scripts/gofmt_check.sh
+  goodbye:
+    - name: check if format has run
+      run: |
+      echo "succeed"
+      needs: gofmt
