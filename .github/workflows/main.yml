@@ -13,5 +13,3 @@ jobs:
       - name: check format before running tests
         run: |
         sh ./scripts/gofmt_check.sh
-
-
