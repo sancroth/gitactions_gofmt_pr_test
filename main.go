@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	test("tekis"   )
+	test( "tekis"    )
 }
 
 func test(s string)    {
